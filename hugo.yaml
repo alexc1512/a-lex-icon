@@ -1,0 +1,8 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: A-lex-icon
+theme: hugo-bearblog
+params:
+  greetingHeadline: "Welcome to A-lex-icon"
+  bio: "A short description about yourself or your blog"
+  showBlogLatestPosts: true
