@@ -43,26 +43,48 @@ Read my posts →">
   <style>
   :root {
     --width: 720px;
-    --font-main: Verdana, sans-serif;
-    --font-secondary: Verdana, sans-serif;
-    --font-scale: 1em;
-    --background-color: #fff;
-    --heading-color: #222;
-    --text-color: #444;
-    --link-color: #3273dc;
-    --visited-color: #8b6fcb;
-    --blockquote-color: #222;
+    --font-main: 'EB Garamond', serif;
+    --font-secondary: 'EB Garamond', serif;
+    --font-scale: 1.1em;
+    --background-color: #FAFAF8;
+    --heading-color: #1a1a1a;
+    --text-color: #1a1a1a;
+    --link-color: #4A6580;
+    --visited-color: #7A90A0;
+    --blockquote-color: #444;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --background-color: #01242e;
-      --heading-color: #eee;
-      --text-color: #ddd;
-      --link-color: #8cc2dd;
-      --visited-color: #8b6fcb;
+      --background-color: #1C1C1C;
+      --heading-color: #E8E6E0;
+      --text-color: #E8E6E0;
+      --link-color: #8BAFC8;
+      --visited-color: #7A90A0;
       --blockquote-color: #ccc;
     }
+  }
+
+  [data-theme="dark"] {
+    --background-color: #1C1C1C;
+    --heading-color: #E8E6E0;
+    --text-color: #E8E6E0;
+    --link-color: #8BAFC8;
+    --visited-color: #7A90A0;
+    --blockquote-color: #ccc;
+  }
+
+  [data-theme="light"] {
+    --background-color: #FAFAF8;
+    --heading-color: #1a1a1a;
+    --text-color: #1a1a1a;
+    --link-color: #4A6580;
+    --visited-color: #7A90A0;
+    --blockquote-color: #444;
+  }
+
+  html {
+    height: 100%;
   }
 
   body {
@@ -77,6 +99,9 @@ Read my posts →">
     overflow-wrap: break-word;
     line-height: 1.5;
     color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   h1,
@@ -114,13 +139,14 @@ Read my posts →">
   }
 
   time {
-    font-family: monospace;
+    font-family: 'EB Garamond', serif;
     font-style: normal;
-    font-size: 15px;
+    font-size: 1em;
   }
 
   main {
     line-height: 1.6;
+    flex: 1;
   }
 
   table {
@@ -192,24 +218,42 @@ Read my posts →">
     color: var(--visited-color);
   }
 
-</style>
-
-</head>
+</style><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"></head>
 
 <body>
   <header><a href="/" class="title">
   <h2>A-lex-icon</h2>
 </a>
 <nav>
-</nav>
-</header>
+</nav></header>
   <main>
 <p>Welcome to my blog!</p>
 <p><a href="/blog/">Read my posts →</a></p>
 
 
   </main>
-  <footer><p style="font-size: 0.75rem; opacity: 0.4; text-align: left;">Copyright © 2026 Alex Cha</p></footer>
+  <footer><div style="display:flex;justify-content:space-between;align-items:center;padding:25px 0;">
+  <p style="font-size: 0.75rem; opacity: 0.4;margin:0;">Copyright © 2026 Alex Cha</p>
+  <button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode" style="background:none;border:none;cursor:pointer;font-size:0.75rem;padding:0;color:var(--text-color);opacity:0.6;">◐</button>
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  const saved = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+</script></footer>
 
   
 </body>
